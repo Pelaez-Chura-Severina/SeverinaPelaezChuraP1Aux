@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>practica 1</title>
+	<meta charset="utf-8" />
+    
+</head>
+<body >
+	<script>
+
+//1. Realiza un script que pida la edad y si es mayor de 18 años indica que ya puede conducir.
+let edad = prompt("Pregunta 1:  Introduce tu edad");
+	if (edad > 18) {
+		alert("Puedes conducir");
+	}
+    else {
+        alert("No puedes conducir");
+}
+
+ /** 2. Realiza un script que pida números hasta que se pulse “cancelar”. Si no es un número deberá 
+indicarse con un «alert» y seguir pidiendo. Al salir con “cancelar” deberá indicarse la suma total 
+de los números introducidos. */
+
+let sum = 0;
+do {
+    var numero = prompt("Pregunta 2: Introduce un numero");
+    if (Number(numero) == numero) {
+        numero = Number(numero);
+        sum = sum + numero;
+    }
+    else {
+        if (numero != undefined) {
+            alert(numero + " No es un numero");
+        }
+    }
+} while (numero != undefined);
+document.write("Pregunta 2: "+ "<br>");
+document.write(sum + "<br>");
+
+//3. Realiza un script que pida por teclado 3 edades y 3 nombres e indique el nombre del mayor.
+let nombre1 = prompt("Pregunta 3:   Nombre 1:");
+let edad1 = Number(prompt("Pregunta 3:   Edad 1:"));
+
+let nombre2 = prompt("Pregunta 3:   Nombre 2:");
+let edad2 = Number(prompt("Pregunta 3:   Edad 2:"));
+
+let nombre3 = prompt("Pregunta 3:   Nombre 3:");
+let edad3 = Number(prompt("Pregunta 3:  Edad 3:"));
+
+var mayor = Math.max(edad1, edad2, edad3);
+if (mayor == edad1) {
+    document.write("Pregunta 3: " + " El mayor es: " + nombre1 +"<br>");
+}
+if (mayor == edad2) {
+    document.write("Pregunta 3: " + " El mayor es: " + nombre2 +"<br>");
+}
+if (mayor == edad3) {
+    document.write("Pregunta 3: " + " El mayor es: " + nombre3 +"<br>");
+}
+
+//4. Genera 3 números aleatorios entre 1 y 99 pero que no se repita ninguno.
+let i = 0;
+let num;
+let Nuno = 0;
+let Ndos = 0;
+let Ntres = 0;
+document.write("Pregunta 4: " + "<br>");
+do {
+    num = Math.floor((Math.random() * 99) + 1);
+    
+    if ((num != Nuno) && (num != Ndos) && (num != Ntres)) {
+        
+        document.write(num + "<br>");
+        i++;
+        if (i == 1) {
+            Nuno = num;
+        }
+        if (i == 2) {
+            Ndos = num;
+        }
+        if (i == 3) {
+            Ntres = num;
+        }
+    }
+} while (i < 3);
+
+//5. Realiza un script que cuente el número de vocales que tiene un texto.
+let texto = prompt("Pregunta 5: Introduce un texto:");
+let numchar = texto.length;
+let voc;
+let n;
+let contador = 0;
+    for (n = 0; n < numchar; n++) {
+        voc = texto.charAt(n);
+        if ((voc == "a") || (voc == "e") || (voc == "i") || (voc == "o") || (voc == "u")|| (voc == "A") || (voc == "E") || (voc == "I") || (voc == "O") || (voc == "U")) {
+            contador++;
+        }
+    }
+    document.write("Pregunta 5" +"<br>" + "Número de Vocales: " + contador + ".<br>");
+
+//6. Pedimos una cadena de texto que sabemos que puede contener paréntesis. Realiza un script que extraiga la cadena que se encuentra entre los paréntesis. Ejemplo: Si escribimoe el texto “Hola (que) tal” se mostrará “que”. Si no existe el signo “(“ mostrará una cadena vacía y si existe el signo “(“pero no el signo “)” mostrará desde el primer paréntesis hasta el final.
+let cadena = prompt("Pregunta 6: Introduce texto que contenga o no paréntesis:");
+let numcar = cadena.length;
+let car;
+let salida = "";
+let j;
+let copiar = false;      
+	for (j = 0; j < numcar; j++) {
+		car = cadena.charAt(j);
+		if (car == ")") {
+            copiar = false;
+        }
+        if (copiar) {
+            salida = salida + car;
+        }
+        if (car == "(") {
+            copiar = true;
+        }
+    }
+document.write("Pregunta 6: " + salida + "<br>");
+
+//7. Realiza un script que pida una cadena de texto y la devuelva al revés. Es decir, si tecleo “hola que tal” deberá mostrar “lat euq aloh”.
+
+let cadeTex = prompt("Pregunta 7: Introduce un Texto:");
+let numechar = cadeTex.length;
+let k;
+let card;
+let resul = "";
+    for (k = 0; k < numechar; k++) {
+        card = cadeTex.charAt(k);
+        resul = card + resul;
+    }
+document.write("Pregunta 7: " + resul + "<br>");
+    
+//8. Realiza un script que muestre la serie de fibonacci hasta un número entre 1 y 100 pedido por teclado.
+
+let numFib = Number(prompt("Pregunta 8: Introducir un número entre 1 y 100 (fibonacci)"));
+if((numFib >= 1) && (numFib <= 100)) {
+let a = 0;
+let b = 1;
+let c;
+document.write("Pregunta 8:" + "<br>");
+document.write(a + "<br>");
+for (l = 0; l < (numFib-1); l++) {
+    c = a + b;
+    document.write(c + "<br>");
+    b = a;
+    a = c;
+   }
+}
+else {
+    alert("Número erróneo");
+}
+
+//9. Realiza un juego de Piedra Papel Tijera contra el Pc.
+let jugados = 0;
+let ganados = 0;
+let perdidos = 0;
+do {
+    let jugada = prompt("Pregunta 9: Escribe \"piedra\", \"papel\" o \"tijera\"");
+    let aleatorio = Math.floor((Math.random() * 9) + 1);
+    let elige = "";
+    if (aleatorio <= 3) {
+        elige = "piedra";
+    }
+    else if (aleatorio <= 6) {
+        elige = "papel";
+    }
+    else {
+        elige = "tijera";
+    }
+    if ((jugada == "piedra") && (elige == "piedra")) {
+        alert(jugada+"-"+elige+": Empate");
+    }
+    else if ((jugada == "piedra") && (elige == "papel")) {
+        alert(jugada+"-"+elige+": Ganador PC");
+        perdidos++;
+    }
+    else if ((jugada == "piedra") && (elige == "tijera")) {
+        alert(jugada+"-"+elige+": Ganador Jugador");
+        ganados++;
+    }
+    else if ((jugada == "papel") && (elige == "papel")) {
+        alert(jugada+"-"+elige+": Empate");
+    }
+    else if ((jugada == "papel") && (elige == "tijera")) {
+        alert(jugada+"-"+elige+": Gana PC");
+        perdidos++;
+    }
+    else if ((jugada == "papel") && (elige == "piedra")) {
+        alert(jugada+"-"+elige+": Ganador Jugador");
+        ganados++;
+    }
+    else if ((jugada == "tijera") && (elige == "tijera")) {
+        alert(jugada+"-"+elige+": Empate");
+    }
+    else if ((jugada == "tijera") && (elige == "piedra")) {
+        alert(jugada+"-"+elige+": Ganador PC");
+        perdidos++;
+    }
+    else if ((jugada == "tijera") && (elige == "papel")) {
+        alert(jugada+"-"+elige+": Ganador Jugador");
+        ganados++;
+    }
+    
+jugados++;
+
+} while (confirm("Jugar de nuevo"));
+document.write("Pregunta 9: " +"<br>");
+document.write("Partidas jugadas: "+jugados+"<br>");
+document.write("Partidas ganadas: "+ganados+"<br>");
+document.write("Partidas perdidas: "+perdidos+"<br>");
+document.write("Partidas empatadas: "+(jugados-ganados-perdidos)+"<br>");
+
+//10. Crea una función que reciba 2 parámetros, precio e iva, y devuelva el precio con iva incluido. Si no recibe el iva, aplicará el 21 por ciento por defecto.
+function IvaFunction(precio, iva){
+iva = iva || 21
+let conIva = (precio + precio*iva/100);
+    return conIva;
+}
+let precio = Number(prompt(" Pregunta 10: Introducir un precio"));
+var iva = Number(prompt("Pregunta 10: Introduce el iva"));
+if(iva > 0){
+    var resultado = IvaFunction(precio, iva);
+}
+else{
+    let resultado = IvaFunction(precio);
+}
+document.write("Pregunta 10: " + "<br>");
+document.write("Precio sin iva: " + precio + "<br>");
+document.write("Precio más Iva: " + resultado + "<br>");
+
+//11. Crea una función validar() para validar la entrada de datos de un formulario
+
+//a. Para evitar que se envíe un formulario varias veces conviene deshabilitar el botón de envío tras enviarlo una vez. Escribe un script para gestionar el envío del formulario:
+//b. Deshabilita el botón "Enviar"
+//c. Cambia el mensaje que muestra el botón de "Enviar" a "Enviando…"
+//d. Cuando se haya enviado genera una página nueva indicando que se ha enviado correctamente y muestra la información que se ha enviado.
+
+//12. Realiza un script que muestre un reloj en pantalla con fecha y hora y que se actualice cada segundo. Función setTimeout().
+let reloj = 0;
+let frecuencia = 1000;
+function actualiza() {
+    let ahora = new Date();
+    let fecha = ahora.getDate() + " - " + (ahora.getMonth() + 1) + " - " + ahora.getFullYear();
+    let hora = ahora.getHours() + ":" + ahora.getMinutes() + ":" + ahora.getSeconds();
+    let escribe = 'Hoy es ' + fecha + ' y son las ' + hora + ' horas';
+    reloj = setTimeout("actualiza()", frecuencia);
+}
+document.write("Pregunta 12: "+ actualiza() + "<br>");
+
+//13. Programa una función que dada una fecha valida determine cuantos años han pasado hasta el día de hoy.
+
+//14. Programa una función que dada una cadena de texto cuente el numero de vocales y consonantes.
+
+let cadT = prompt("Pregunta 14: Introduce una cadena de texto:");
+let numC = cadT.length;    
+cadT = cadT.toUpperCase();  
+let car2;
+let contV = 0;
+let contC = 0;
+let contE = 0;
+for (i = 0; i < numC; i++) {
+    car2 = cadT.charAt(i);    //recupera el caracter i del string.
+    if ((car2 == "A") || (car2 == "E") || (car2 == "I") || (car2 == "O") || (car2 == "U")) {
+        contV++;
+    }
+    else if(car2 == " "){
+        contE++;
+    }
+    else if((car2 != "A") || (car2 != "E") || (car2 != "I") || (car2 != "O") || (car2 != "U")){
+        contC++;
+    }
+}
+document.write("Pregunta 14: "+ "<br>");
+document.write("Número de Vocales: " + contV + ".<br>");
+document.write("Número de Consonantes: " + contC + ".<br>");
+document.write("Espacios: " + contE + ".");
+
+//15. Programa una función que valide que un texto sea un nombre valido. Entrada(‘edson’) devolverá ‘verdadero’.
+//16. Programa una función que dado un arreglo de elementos, elimine los duplicados: entrada([‘5’, ’25’, ‘10’, ‘s’, ‘5’, ‘a’, ‘a’]) devolverá ([‘5’, ‘25’, ‘10’, ‘s’, ‘a’]).
+//17. Programa una función que dado un array de números devuelva un objeto con dos arreglos el primero con los números pares y en el segundo con los números impares.
+//18. Ayuda al Elfo a listar los regalos.<script src="app2.js"></script>
+    </script>
+    
+</body>
+</html>
